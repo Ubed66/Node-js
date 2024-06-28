@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+      <div class="form p-10 text-white">
+        <form action="/create" method="post">
+          <input
+            class="block px-5 py-3 bg-zinc-800 w-full rounded-md outline-none"
+            type="text"
+            placeholder="Title Goes Here"
+            name="title"
+          />
+          <textarea
+            class="block px-5 mt-2 py-3 bg-zinc-800 resize-none w-full rounded-md outline-none"
+            placeholder="Descriptions"
+            name="details"
+          ></textarea>
+          <input
+            type="submit"
+            value="Create task"
+            class="mt-2 bg-blue-600 px-3 py-2 rounded-md"
+          />
+        </form>
+      </div>
+      <div class="tasks p-10 text-white flex gap-3 flex-wrap">
+        <% if(files.length>0){ %> <% files.forEach(function(val){%>
+        <div class="task w-72 px-3 py-4 rounded-md bg-zinc-800">
+          <div class="flex justify-between items-center">
+            <h1 class="text-3xl tracking-tighter"><%= val %></h1>
+            <a href="/edit/<%= val %>">
+              <svg
+                class="h-5 w-5 text-gray-500"
+                <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                />
+                <path
+                  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                />
+              </svg>
+            </a>
+          </div>
+          <a href="/file/<%= val %>" class="inline-block mt-3 text-blue-500"
+            >Read more</a
+          >
+        </div>
+        <%}) %> <% }else{%>
+        <h1 class="">No Tasks Yet..</h1>
+        <%}%>
+      </div>
+    </div>
+  </body>
+  <script src="/javaScripts/script.js"></script>
+</html>
